@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="TheWitcher3">@drawable/witcher3</drawable>
+    <drawable name="Payday2">@drawable/payday2</drawable>
+    <drawable name="CounterStrikeGlobalOffensive">@drawable/csgo</drawable>
+    <drawable name="RedDeadRedemption2">@drawable/red2</drawable>
+    <drawable name="XCOM2">@drawable/xcom2</drawable>
+    <drawable name="TomClancysRainbowSixSeige">@drawable/r6</drawable>
+    <drawable name="CallofDutyModernWarfare">@drawable/cod</drawable>
+    <drawable name="AgeofEmpires2">@drawable/age2</drawable>
+    <drawable name="Fallout4">@drawable/fallout4</drawable>
+    <drawable name="FarCry5">@drawable/farcry5</drawable>
+    <drawable name="GodofWar">@drawable/godofwar</drawable>
+    <drawable name="HorizonZeroDawn">@drawable/horizon</drawable>
+    <drawable name="Nioh">@drawable/nioh</drawable>
+    <drawable name="Persona5">@drawable/persona5</drawable>
+    <drawable name="TheLastofUs">@drawable/thelastofus</drawable>
+        <drawable name="Uncharted4">@drawable/uncharted4</drawable>
+        <drawable name="UntilDawn">@drawable/untildawn</drawable>
+    <!--    <drawable name="Witcher3">@drawable/persona5</drawable>-->
+    <!--    <drawable name="Witcher3">@drawable/thelastofus</drawable>-->
+</resources>
