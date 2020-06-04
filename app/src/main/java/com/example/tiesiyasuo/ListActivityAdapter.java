@@ -3,6 +3,7 @@ package com.example.tiesiyasuo;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Parcelable;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,11 +43,11 @@ public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapte
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.itemView.setTag(mData.get(position).getDescription());
+        holder.itemView.setTag(mData.get(position));
         holder.tview.setText(mData.get(position).getName());
         holder.pr.setText(mData.get(position).getPrice());
         String name = mData.get(position).getName().replaceAll("\\s+", "");
-        name = name.replaceAll("[-:']","");
+        name = name.replaceAll("[-:'&]","");
         int id = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
 
         holder.img.setImageResource(id);
@@ -86,8 +87,13 @@ public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapte
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
-                    String temp = (String) view.getTag();
-                    Toast.makeText(view.getContext(), temp, Toast.LENGTH_SHORT).show();
+                    Game temp = (Game) view.getTag();
+                    Toast.makeText(view.getContext(), temp.getName(), Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(context, DetailsActivity.class);
+                    intent.putExtra("GameName", temp.getName());
+                    intent.putExtra("GamePrice", temp.getPrice());
+                    intent.putExtra("GameDescription", temp.getDescription());
+                    context.startActivity(intent);
                 }
             });
 

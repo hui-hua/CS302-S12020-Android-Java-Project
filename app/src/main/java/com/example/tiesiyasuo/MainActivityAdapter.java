@@ -71,10 +71,8 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
                 @Override
                 public void onClick(View view){
                     String temp = (String) view.getTag();
-                    Toast.makeText(view.getContext(), temp, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, ListActivity.class);
                     intent.putExtra("sendConsole", temp);
-                    //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     context.startActivity(intent);
                 }
             });

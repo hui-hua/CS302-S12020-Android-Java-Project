@@ -15,8 +15,17 @@
     <drawable name="Nioh">@drawable/nioh</drawable>
     <drawable name="Persona5">@drawable/persona5</drawable>
     <drawable name="TheLastofUs">@drawable/thelastofus</drawable>
-        <drawable name="Uncharted4">@drawable/uncharted4</drawable>
-        <drawable name="UntilDawn">@drawable/untildawn</drawable>
+    <drawable name="Uncharted4">@drawable/uncharted4</drawable>
+    <drawable name="UntilDawn">@drawable/untildawn</drawable>
+    <drawable name="AnimalCrossingNewHorizons">@drawable/animal</drawable>
+    <drawable name="PokemonSword">@drawable/sword</drawable>
+    <drawable name="PokemonShield">@drawable/shield</drawable>
+    <drawable name="XenobladeChronicles">@drawable/xenoblade</drawable>
+    <drawable name="SuperMarioOdyssey">@drawable/odyssey</drawable>
+    <drawable name="MarioKart8Deluxe">@drawable/mariokart</drawable>
+    <drawable name="OctopathTraveller">@drawable/octopath</drawable>
+    <drawable name="MarioSonicattheOlympicGames">@drawable/mariosonic</drawable>
+    <drawable name="GRIS">@drawable/gris</drawable>
     <!--    <drawable name="Witcher3">@drawable/persona5</drawable>-->
     <!--    <drawable name="Witcher3">@drawable/thelastofus</drawable>-->
 </resources>

@@ -1,11 +1,14 @@
 package com.example.tiesiyasuo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -20,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         RecyclerView recyclerView = findViewById(R.id.consoleRecycler);
-
-
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         Map<Integer, String> consolesDict = returnConsoles();
         List<String> consoles = new ArrayList<String>(consolesDict.values());
         MainActivityAdapter myAdapter = new MainActivityAdapter(this, consoles);

@@ -1,11 +1,13 @@
 package com.example.tiesiyasuo;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -19,24 +21,53 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    String[] sortlist = { "Alphabetical (A to Z)", "Alphabetical (Z to A)", "Price (Lowest to Highest)", "Price (Highest to Lowest)" };
+    String[] sortlist = { "SORT", "A TO Z", "Z TO A", "LOWEST TO HIGHEST", "HIGHEST TO LOWEST" };
     List<Game>[] filtlist = new List[]{new ArrayList<Game>()};
     ListActivityAdapter myAdapter = new ListActivityAdapter(this, filtlist[0]);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
+        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Bundle extras = getIntent().getExtras();
         String console = extras.getString("sendConsole");
         this.setTitle(console);
         RecyclerView recyclerView = findViewById(R.id.listRecycler);
+        List<Game> gamelist = generateGames();
+
+
+
+        for (int i = 0; i < gamelist.size(); i++){
+            if (gamelist.get(i).getConsole().equals(console)){
+                filtlist[0].add(gamelist.get(i));
+            }
+        }
+
+        //ListActivityAdapter myAdapter = new ListActivityAdapter(this, filtlist[0]);
+        GridLayoutManager layoutManager = new GridLayoutManager(this,2);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setAdapter(myAdapter);
+
+
+
+        Spinner spin = findViewById(R.id.spinner);
+        spin.setOnItemSelectedListener(this);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sortlist);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(adapter);
+
+
+    }
+
+    public List<Game> generateGames(){
         List<Game> gamelist = new ArrayList<Game>();
         gamelist.add(new Game("Red Dead Redemption 2", "PC", 90));
         gamelist.add(new Game("XCOM 2", "PC", 80));
         gamelist.add(new Game("Counter-Strike: Global Offensive", "PC", 10, "Counter-Strike: Global Offensive (CS: GO) expands upon the team-based action gameplay that it pioneered when it was launched 19 years ago. CS: GO features new maps, characters, weapons, and game modes, and delivers updated versions of the classic CS content (de_dust2, etc.)."));
         gamelist.add(new Game("Payday 2", "PC", 5));
-        gamelist.add(new Game("The Witcher 3", "PC", 10));
+        gamelist.add(new Game("The Witcher 3", "PC", 10, "As war rages on throughout the Northern Realms, you take on the greatest contract of your life — tracking down the Child of Prophecy, a living weapon that can alter the shape of the world."));
         gamelist.add(new Game("Tom Clancy's Rainbow Six Seige", "PC", 25));
         gamelist.add(new Game("Fallout 4", "PC", 75));
         gamelist.add(new Game("Far Cry 5", "PC", 70));
@@ -55,32 +86,13 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         gamelist.add(new Game("Animal Crossing: New Horizons", "Switch", 90));
         gamelist.add(new Game("Pokemon: Sword", "Switch", 100));
         gamelist.add(new Game("Pokemon: Shield", "Switch", 100));
-        gamelist.add(new Game("Zenoblade Chronicles", "Switch", 90));
+        gamelist.add(new Game("Xenoblade Chronicles", "Switch", 90));
         gamelist.add(new Game("Super Mario Odyssey", "Switch", 95));
         gamelist.add(new Game("Mario Kart 8 Deluxe", "Switch", 95));
         gamelist.add(new Game("Octopath Traveller", "Switch", 90));
         gamelist.add(new Game( "Mario & Sonic at the Olympic Games", "Switch", 90));
-
-
-        for (int i = 0; i < gamelist.size(); i++){
-            if (gamelist.get(i).getConsole().equals(console)){
-                filtlist[0].add(gamelist.get(i));
-            }
-        }
-
-        //ListActivityAdapter myAdapter = new ListActivityAdapter(this, filtlist[0]);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,2);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(myAdapter);
-
-
-
-        Spinner spin = findViewById(R.id.spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sortlist);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin.setAdapter(adapter);
-        spin.setOnItemSelectedListener(this);
-
+        gamelist.add(new Game( "GRIS", "Switch", 90));
+        return gamelist;
     }
 
     @Override
@@ -99,7 +111,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
         for(int i=0;i<filtlist.size();i++){
 
             for(int j=i+1;j<filtlist.size();j++){
-                if (ord == 0){
+                if (ord == 1){
                     if(filtlist.get(i).getName().compareTo(filtlist.get(j).getName())>0){
 
                         Game temp = filtlist.get(i);
@@ -108,7 +120,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
 
                     }
                 }
-                else if (ord == 1){
+                else if (ord == 2){
                     if(filtlist.get(i).getName().compareTo(filtlist.get(j).getName())<0){
 
                         Game temp = filtlist.get(i);
@@ -117,7 +129,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
 
                     }
                 }
-                else if (ord == 2){
+                else if (ord == 3){
                     if(filtlist.get(i).getPriceInt().compareTo(filtlist.get(j).getPriceInt())>0){
 
                         Game temp = filtlist.get(i);
@@ -126,7 +138,7 @@ public class ListActivity extends AppCompatActivity implements AdapterView.OnIte
 
                     }
                 }
-                else if (ord == 3){
+                else if (ord == 4){
                     if(filtlist.get(i).getPriceInt().compareTo(filtlist.get(j).getPriceInt())<0){
 
                         Game temp = filtlist.get(i);
