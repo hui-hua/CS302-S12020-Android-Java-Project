@@ -42,8 +42,8 @@ public class DetailsActivity extends AppCompatActivity {
         ImageView img = findViewById(R.id.gameIcon);
         img.setImageResource(id);
         temp = temp.toLowerCase();
-        id = this.getResources().getIdentifier(temp + "3", "drawable", this.getPackageName());
-        background.setImageResource(id);
+        int backid = this.getResources().getIdentifier(temp + "3", "drawable", this.getPackageName());
+        background.setImageResource(backid);
         String test = this.getResources().getResourceName(id);
         List<String> screens = new ArrayList<String>();
 

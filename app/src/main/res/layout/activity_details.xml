@@ -15,138 +15,110 @@
             android:id="@+id/detailsbackground"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
-            android:layout_marginBottom="331dp"
-            android:alpha="0.8"
+            android:alpha="0.7"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/thewitcher31" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            app:srcCompat="@drawable/AgeofEmpires2" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingTop="100dp">
-
-        <androidx.cardview.widget.CardView
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            app:cardBackgroundColor="@android:color/transparent"
-            app:cardCornerRadius="10dp"
-            app:cardElevation="0dp"
-            app:cardUseCompatPadding="false"
-            tools:layout_editor_absoluteY="691dp">
+            android:paddingTop="50dp"
+            tools:layout_editor_absoluteY="100dp">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@android:color/transparent">
+            <TextView
+                android:id="@+id/gamename"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:paddingLeft="20dp"
+                android:paddingTop="10dp"
+                android:text="TextView"
+                android:textColor="@android:color/white"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.23"
+                app:layout_constraintStart_toEndOf="@+id/cardView"
+                app:layout_constraintTop_toTopOf="@+id/cardView" />
 
-                <LinearLayout
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="10dp"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintBottom_toTopOf="@+id/guideline4"
+                app:layout_constraintEnd_toStartOf="@+id/guideline3"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/gameIcon"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    android:orientation="vertical">
+                    android:layout_height="100dp"
+                    android:cropToPadding="false"
+                    android:scaleType="centerCrop"
+                    tools:srcCompat="@drawable/pc" />
+            </androidx.cardview.widget.CardView>
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/screensRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingLeft="5dp"
+                app:layout_constraintTop_toTopOf="@+id/guideline4"
+                tools:layout_editor_absoluteX="27dp" />
 
-                        <TextView
-                            android:id="@+id/gamename"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/open_sans"
-                            android:paddingLeft="20dp"
-                            android:paddingTop="10dp"
-                            android:text="TextView"
-                            android:textColor="@android:color/white"
-                            android:textSize="30sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.23"
-                            app:layout_constraintStart_toEndOf="@+id/cardView"
-                            app:layout_constraintTop_toTopOf="@+id/cardView" />
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.3" />
 
-                        <androidx.cardview.widget.CardView
-                            android:id="@+id/cardView"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:clipToPadding="false"
-                            app:cardCornerRadius="5dp"
-                            app:cardElevation="10dp"
-                            app:cardUseCompatPadding="true"
-                            app:layout_constraintBottom_toTopOf="@+id/guideline4"
-                            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.3" />
 
-                            <ImageView
-                                android:id="@+id/gameIcon"
-                                android:layout_width="match_parent"
-                                android:layout_height="100dp"
-                                android:cropToPadding="false"
-                                android:scaleType="centerCrop"
-                                tools:srcCompat="@drawable/pc" />
-                        </androidx.cardview.widget.CardView>
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="About this game"
+                android:textColor="@color/text"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/screensRecycler" />
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/screensRecycler"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:paddingLeft="5dp"
-                            app:layout_constraintTop_toTopOf="@+id/guideline4"
-                            tools:layout_editor_absoluteX="27dp" />
+            <TextView
+                android:id="@+id/deets"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/open_sans"
+                android:padding="10dp"
+                android:text="TextView"
+                android:textColor="@color/text"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            app:layout_constraintGuide_percent="0.3" />
-
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            app:layout_constraintGuide_percent="0.3" />
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:padding="10dp"
-                            android:text="About this game"
-                            android:textColor="@color/text"
-                            android:textSize="24sp"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/screensRecycler" />
-
-                        <TextView
-                            android:id="@+id/deets"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="@font/open_sans"
-                            android:padding="10dp"
-                            android:text="TextView"
-                            android:textColor="@color/text"
-                            android:textSize="18sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-            </ScrollView>
-        </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline6"
