@@ -34,7 +34,7 @@
                 android:id="@+id/text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans_light"
+                android:fontFamily="@font/montserrat"
                 android:gravity="start"
                 android:includeFontPadding="true"
                 android:padding="10dp"

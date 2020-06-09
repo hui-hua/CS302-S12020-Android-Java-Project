@@ -37,7 +37,8 @@ public class DetailsActivity extends AppCompatActivity {
         TextView deets = findViewById(R.id.deets);
         deets.setText(gameDeets);
         String temp = gameName.replaceAll("\\s+", "");
-        temp = temp.replaceAll("[-:']","");
+        temp = temp.replaceAll("[-:'&]","");
+        System.out.println(temp);
         int id = this.getResources().getIdentifier(temp, "drawable", this.getPackageName());
         ImageView img = findViewById(R.id.gameIcon);
         img.setImageResource(id);

@@ -7,7 +7,7 @@
     <drawable name="XCOM2">@drawable/xcom2</drawable>
     <drawable name="TomClancysRainbowSixSeige">@drawable/r6</drawable>
     <drawable name="CallofDutyModernWarfare">@drawable/cod</drawable>
-    <drawable name="AgeofEmpires2">@drawable/age2</drawable>
+    <drawable name="AgeofEmpiresIIDefinitiveEdition">@drawable/age2</drawable>
     <drawable name="Fallout4">@drawable/fallout4</drawable>
     <drawable name="FarCry5">@drawable/farcry5</drawable>
     <drawable name="GodofWar">@drawable/godofwar</drawable>
@@ -26,6 +26,7 @@
     <drawable name="OctopathTraveller">@drawable/octopath</drawable>
     <drawable name="MarioSonicattheOlympicGames">@drawable/mariosonic</drawable>
     <drawable name="GRIS">@drawable/gris</drawable>
+    <drawable name="Tekken7">@drawable/tekken7</drawable>
     <!--    <drawable name="Witcher3">@drawable/persona5</drawable>-->
     <!--    <drawable name="Witcher3">@drawable/thelastofus</drawable>-->
 </resources>
