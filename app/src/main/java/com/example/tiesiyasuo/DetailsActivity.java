@@ -11,8 +11,14 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.smarteist.autoimageslider.IndicatorAnimations;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
+import com.smarteist.autoimageslider.SliderViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,14 +28,18 @@ public class DetailsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_details);
+        setContentView(R.layout.activity_details2);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ActionBar bar = getSupportActionBar();
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         bar.setDisplayShowTitleEnabled(false);
+        TextView pricebutton = findViewById(R.id.detailsButtonPrice);
+
         ImageView background = findViewById(R.id.detailsbackground);
 //        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#FFFFFF")));
         Bundle extras = getIntent().getExtras();
+        String gamePrice = extras.getString("GamePrice");
+        pricebutton.setText(gamePrice);
         String gameName = extras.getString("GameName");
         TextView name = findViewById(R.id.gamename);
         name.setText(gameName);
@@ -54,23 +64,19 @@ public class DetailsActivity extends AppCompatActivity {
         System.out.println(screens.get(0));
         System.out.println(screens.get(1));
 
-        DetailsActivityAdapter myAdapter = new DetailsActivityAdapter(this, screens);
-        RecyclerView recyView = findViewById(R.id.screensRecycler);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        recyView.setLayoutManager(layoutManager);
-        recyView.setAdapter(myAdapter);
+//        DetailsActivityAdapter myAdapter = new DetailsActivityAdapter(this, screens);
+        SliderView sliderView = findViewById(R.id.imageSlider);
+        sliderView.setSliderAdapter(new DetailsActivityAdapter(this, screens));
+//        sliderView.startAutoCycle();
+//        sliderView.setIndicatorAnimation(IndicatorAnimations.WORM);
+//        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
+//        RecyclerView recyView = findViewById(R.id.screensRecycler);
+//        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+
+//        recyView.setLayoutManager(layoutManager);
+//        recyView.setAdapter(myAdapter);
 
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                finish();
-                return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 }

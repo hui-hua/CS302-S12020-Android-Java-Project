@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapter.ViewHolder> {
 
     private List<String> mData;
-    private LayoutInflater mInflater;
     private Context context;
 
     // data is passed into the constructor
@@ -51,10 +50,8 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
                 break;
         }
 
-        //setText(animal);
     }
 
-    // total number of rows
     @Override
     public int getItemCount() {
         return mData.size();

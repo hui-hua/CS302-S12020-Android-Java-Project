@@ -88,7 +88,7 @@ public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapte
                 @Override
                 public void onClick(View view){
                     Game temp = (Game) view.getTag();
-                    Toast.makeText(view.getContext(), temp.getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(view.getContext(), temp.getPrice(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, DetailsActivity.class);
                     intent.putExtra("GameName", temp.getName());
                     intent.putExtra("GamePrice", temp.getPrice());

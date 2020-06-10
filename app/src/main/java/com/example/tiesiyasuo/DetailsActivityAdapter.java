@@ -13,11 +13,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.smarteist.autoimageslider.SliderViewAdapter;
+
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class DetailsActivityAdapter extends RecyclerView.Adapter<DetailsActivityAdapter.ViewHolder> {
+public class DetailsActivityAdapter extends SliderViewAdapter<DetailsActivityAdapter.SliderAdapterVH> {
 
     private List<String> mData;
     private String name;
@@ -33,35 +35,35 @@ public class DetailsActivityAdapter extends RecyclerView.Adapter<DetailsActivity
 
     // inflates the row layout from xml when needed
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public SliderAdapterVH onCreateViewHolder(ViewGroup parent) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.detailsscreens, parent, false);
 
-        return new ViewHolder(view);
-
+        return new SliderAdapterVH(view);
     }
 
-    // binds the data to the TextView in each row
     @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.itemView.setTag(mData.get(position));
+    public void onBindViewHolder(SliderAdapterVH viewHolder, int position) {
+        viewHolder.itemView.setTag(mData.get(position));
         name = mData.get(position);
         int id = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
-        holder.img.setImageResource(id);
-
+        viewHolder.img.setImageResource(id);
     }
 
-    // total number of rows
     @Override
-    public int getItemCount() {
+    public int getCount() {
         return mData.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        public ImageView img;
-        public ViewHolder(View itemview){
-            super(itemview);
-            img = itemView.findViewById(R.id.screen);
 
+    public class SliderAdapterVH extends SliderViewAdapter.ViewHolder {
+
+        View itemView;
+        ImageView img;
+
+        public SliderAdapterVH(View itemView) {
+            super(itemView);
+            img = itemView.findViewById(R.id.screen);
+            this.itemView = itemView;
         }
     }
 }
