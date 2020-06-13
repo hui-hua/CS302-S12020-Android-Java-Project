@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/refreshButton"
+        android:enabled="true"
+        android:icon="@drawable/refresh"
+        android:title="Item"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/searchButton"
+        android:checkable="false"
+        android:enabled="true"
+        android:icon="@drawable/search"
+        android:title="Item"
+        app:showAsAction="always" />
+</menu>

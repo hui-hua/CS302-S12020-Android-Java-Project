@@ -19,7 +19,7 @@ import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapter.ViewHolder> {
+public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHolder> {
 
     private List<Game> mData;
     private String name;
@@ -28,7 +28,7 @@ public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapte
     Integer buttonWidth;
 
     // data is passed into the constructor
-    public ListActivityAdapter(Context context, List<Game> data) {
+    public TopPicksAdapter(Context context, List<Game> data) {
         this.context = context;
         this.mData = data;
     }
@@ -36,7 +36,7 @@ public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapte
     // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem2, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem, parent, false);
 
         return new ViewHolder(view);
 
@@ -46,8 +46,6 @@ public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.itemView.setTag(mData.get(position));
-        holder.tview.setText(mData.get(position).getName());
-        holder.pr.setText(mData.get(position).getPrice());
         String name = mData.get(position).getName().replaceAll("\\s+", "");
         name = name.replaceAll("[-:'&]","");
         System.out.println(name);
@@ -64,13 +62,9 @@ public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapte
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
-        public TextView tview;
-        public TextView pr;
         public ImageView img;
         public ViewHolder(View itemview){
             super(itemview);
-            tview = itemView.findViewById(R.id.text);
-            pr = itemview.findViewById(R.id.price);
             img = itemView.findViewById(R.id.image);
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
@@ -80,15 +74,13 @@ public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapte
                     updateDatabase test = new updateDatabase(context);
                     test.updateDatabaseGame(temp, context);
                     Game testingload = test.load(temp.getName(), temp.getConsole());
-                    System.out.println("pre views is " + testingload.getVisited());
+
                     Toast.makeText(view.getContext(), testingload.getVisited().toString(), Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(context, DetailsActivity.class);
                     intent.putExtra("GameName", temp.getName());
                     intent.putExtra("GamePrice", temp.getPrice());
                     intent.putExtra("GameDescription", temp.getDescription());
                     intent.putExtra("Console", temp.getConsole());
-                    intent.putExtra("Views", testingload.getVisited() + "");
-
                     context.startActivity(intent);
 //                    ((Activity)context).finish();
                 }

@@ -52,12 +52,11 @@
                 android:scaleType="fitStart"
                 android:scaleX="1"
                 android:scaleY="1"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guideline2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline2"
-                app:layout_constraintVertical_bias="0.0"
+                app:layout_constraintTop_toBottomOf="@+id/text"
                 app:srcCompat="@drawable/stars5" />
 
             <TextView
@@ -65,9 +64,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="left"
+                android:ellipsize="end"
                 android:fontFamily="@font/montserrat"
                 android:gravity="start"
                 android:includeFontPadding="true"
+                android:maxLines="1"
                 android:paddingLeft="10dp"
                 android:paddingTop="5dp"
                 android:shadowColor="#000000"

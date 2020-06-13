@@ -10,11 +10,13 @@ import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.smarteist.autoimageslider.IndicatorAnimations;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
@@ -30,9 +32,10 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details2);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        ActionBar bar = getSupportActionBar();
+
+
         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
-        bar.setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         TextView pricebutton = findViewById(R.id.detailsButtonPrice);
 
         ImageView background = findViewById(R.id.detailsbackground);
@@ -43,6 +46,14 @@ public class DetailsActivity extends AppCompatActivity {
         String gameName = extras.getString("GameName");
         TextView name = findViewById(R.id.gamename);
         name.setText(gameName);
+        TextView views = findViewById(R.id.viewsText);
+        updateDatabase tempo = new updateDatabase(this);
+        Game game = tempo.load(gameName, extras.getString("Console"));
+
+//        System.out.println("views is " + getIntent().getIntExtra("Views",0));
+        views.setText(game.getVisited().toString());
+        TextView consText = findViewById(R.id.consoleText);
+        consText.setText(extras.getString("Console"));
         String gameDeets = extras.getString("GameDescription");
         TextView deets = findViewById(R.id.deets);
         deets.setText(gameDeets);
@@ -51,16 +62,21 @@ public class DetailsActivity extends AppCompatActivity {
         System.out.println(temp);
         int id = this.getResources().getIdentifier(temp, "drawable", this.getPackageName());
         ImageView img = findViewById(R.id.gameIcon);
-        img.setImageResource(id);
+//        img.setImageResource(id);
+        new loadImage(this, id, img);
         temp = temp.toLowerCase();
         int backid = this.getResources().getIdentifier(temp + "3", "drawable", this.getPackageName());
         background.setImageResource(backid);
+        img.setImageResource(id);
+//        Glide.with(this)
+//                .load(id)
+//                .into(img);
         String test = this.getResources().getResourceName(id);
         List<String> screens = new ArrayList<String>();
 
         screens.add(temp + "1");
         screens.add(temp + "2");
-        screens.add(test);
+        screens.add(temp + "3");
         System.out.println(screens.get(0));
         System.out.println(screens.get(1));
 
@@ -68,15 +84,23 @@ public class DetailsActivity extends AppCompatActivity {
         SliderView sliderView = findViewById(R.id.imageSlider);
         sliderView.setSliderAdapter(new DetailsActivityAdapter(this, screens));
 //        sliderView.startAutoCycle();
-//        sliderView.setIndicatorAnimation(IndicatorAnimations.WORM);
-//        sliderView.setSliderTransformAnimation(SliderAnimations.SIMPLETRANSFORMATION);
-//        RecyclerView recyView = findViewById(R.id.screensRecycler);
-//        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-
-//        recyView.setLayoutManager(layoutManager);
-//        recyView.setAdapter(myAdapter);
+//        sliderView.setAutoCycleDirection(SliderView.AUTO_CYCLE_DIRECTION_RIGHT);
+        sliderView.setIndicatorAnimation(IndicatorAnimations.SLIDE);
+        sliderView.setSliderTransformAnimation(SliderAnimations.ZOOMOUTTRANSFORMATION);
 
 
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
 }

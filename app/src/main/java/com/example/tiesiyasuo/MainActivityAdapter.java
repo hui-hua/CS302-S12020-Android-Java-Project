@@ -2,6 +2,7 @@ package com.example.tiesiyasuo;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +19,7 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
     private List<String> mData;
     private Context context;
+    private  List<Game> gamelist;
 
     // data is passed into the constructor
     public MainActivityAdapter(Context context, List<String> data) {
@@ -64,6 +67,11 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
             super(itemview);
             tview = itemView.findViewById(R.id.text);
             img = itemView.findViewById(R.id.image);
+
+
+
+
+
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view){
@@ -76,4 +84,5 @@ public class MainActivityAdapter extends RecyclerView.Adapter<MainActivityAdapte
 
         }
     }
+
 }

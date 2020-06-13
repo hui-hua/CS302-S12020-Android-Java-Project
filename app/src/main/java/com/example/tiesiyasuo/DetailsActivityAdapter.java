@@ -46,7 +46,8 @@ public class DetailsActivityAdapter extends SliderViewAdapter<DetailsActivityAda
         viewHolder.itemView.setTag(mData.get(position));
         name = mData.get(position);
         int id = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
-        viewHolder.img.setImageResource(id);
+        new loadImage(context, id, viewHolder.img);
+//        viewHolder.img.setImageResource(id);
     }
 
     @Override
