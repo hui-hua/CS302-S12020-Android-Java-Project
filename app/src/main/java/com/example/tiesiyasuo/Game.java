@@ -9,6 +9,7 @@ public class Game{
     String Descrip;
     Integer Visited;
     static int count = 0;
+
     public Game(String name, String console, Float price, String description){
         count++;
         String temp = Integer.toString(count);
@@ -21,21 +22,6 @@ public class Game{
         this.price = (float) price;
         this.ID = temp;
         this.Descrip = description;
-        this.Visited = 0;
-    }
-
-    public Game(String name, String console, Float price){
-        count++;
-        String temp = Integer.toString(count);
-        while (temp.length() < 5){
-            temp = "0" + temp;
-        }
-
-        this.name = name;
-        this.console = console;
-        this.price = (float) price;
-        this.ID = temp;
-        this.Descrip = "...";
         this.Visited = 0;
     }
 
@@ -72,9 +58,4 @@ public class Game{
         }
         return 0;
     }
-
-//    @Override
-//    public int compareTo(Game game) {
-//        return this.getName().compareTo(game.getName());
-//    }
 }

@@ -1,32 +1,20 @@
 package com.example.tiesiyasuo;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.ClipData;
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.PopupMenu;
-import android.widget.Spinner;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class ListActivity extends AppCompatActivity {
 
@@ -36,21 +24,23 @@ public class ListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-
         Objects.requireNonNull(getSupportActionBar()).setBackgroundDrawable(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
         Bundle extras = getIntent().getExtras();
+        assert extras != null;
         String console = extras.getString("sendConsole");
         this.setTitle(console);
-        RecyclerView recyclerView = findViewById(R.id.listRecycler);
-        assert console != null;
 
+
+        RecyclerView recyclerView = findViewById(R.id.listRecycler);
+
+        // load games for chosen console
         updateDatabase temp = new updateDatabase(this);
         gamelist = temp.loadGames(console);
 
-
+        // set up ListActivityAdapter for recyclerview
         myAdapter  = new ListActivityAdapter(this, gamelist);
         GridLayoutManager layoutManager = new GridLayoutManager(this,2);
         recyclerView.setLayoutManager(layoutManager);
@@ -111,9 +101,11 @@ public class ListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int temp = 0;
         switch (item.getItemId()) {
+            // back button
             case android.R.id.home:
                 finish();
                 return true;
+            // sort choices
             case R.id.one:
                 temp = 1;
                 break;

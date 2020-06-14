@@ -1,18 +1,11 @@
 package com.example.tiesiyasuo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Parcelable;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
@@ -22,10 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHolder> {
 
     private List<Game> mData;
-    private String name;
-    private LayoutInflater mInflater;
     private Context context;
-    Integer buttonWidth;
 
     // data is passed into the constructor
     public TopPicksAdapter(Context context, List<Game> data) {
@@ -42,7 +32,6 @@ public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHo
 
     }
 
-    // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         holder.itemView.setTag(mData.get(position));
@@ -51,11 +40,8 @@ public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHo
         System.out.println(name);
         int id = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
         new loadImage(context, id, holder.img);
-//        holder.img.setImageResource(id);
-
     }
 
-    // total number of rows
     @Override
     public int getItemCount() {
         return mData.size();
@@ -82,7 +68,6 @@ public class TopPicksAdapter extends RecyclerView.Adapter<TopPicksAdapter.ViewHo
                     intent.putExtra("GameDescription", temp.getDescription());
                     intent.putExtra("Console", temp.getConsole());
                     context.startActivity(intent);
-//                    ((Activity)context).finish();
                 }
             });
 

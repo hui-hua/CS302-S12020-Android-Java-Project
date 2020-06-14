@@ -1,18 +1,18 @@
 package com.example.tiesiyasuo;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class SearchActivity extends AppCompatActivity {
 
@@ -35,17 +35,25 @@ public class SearchActivity extends AppCompatActivity {
         updateDatabase newDatabase = new updateDatabase(this);
         List<Game> gamesList = newDatabase.loadGames("All");
         List<Game> searchResults = new ArrayList<>();
-        for (Game tempGame:gamesList){
-            if (tempGame.getName().toLowerCase().contains(searchTerm.toLowerCase())){
+
+        // find search term/s in names of games and add results to a new array
+        for (Game tempGame : gamesList) {
+            if (tempGame.getName().toLowerCase().contains(searchTerm.toLowerCase())) {
                 searchResults.add(tempGame);
             }
         }
 
+        // if no results, show "no results found"
+        if (searchResults.size() == 0) {
+            TextView noresults = findViewById(R.id.searchText2);
+            noresults.setVisibility(View.VISIBLE);
+        }
 
 
+        // adapter for results
         RecyclerView recyclerView = findViewById(R.id.listRecycler);
-        ListActivityAdapter myAdapter  = new ListActivityAdapter(this, searchResults);
-        GridLayoutManager layoutManager = new GridLayoutManager(this,2);
+        ListActivityAdapter myAdapter = new ListActivityAdapter(this, searchResults);
+        GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(myAdapter);
 

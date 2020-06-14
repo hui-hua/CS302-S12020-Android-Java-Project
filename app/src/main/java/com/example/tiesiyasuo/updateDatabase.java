@@ -5,19 +5,21 @@ import android.content.SharedPreferences;
 
 import com.google.gson.Gson;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.content.Context.MODE_PRIVATE;
 
+
+// this saves, updates and loads the game data using sharedpreferences
 public class updateDatabase {
     SharedPreferences mPrefs;
-    public updateDatabase(Context context){
+
+    public updateDatabase(Context context) {
         mPrefs = context.getSharedPreferences("gameDatabase", MODE_PRIVATE);
     }
 
-    public void updateDatabaseGame(Game game, Context context){
+    public void updateDatabaseGame(Game game, Context context) {
         mPrefs = context.getSharedPreferences("gameDatabase", MODE_PRIVATE);
         save(game);
     }
@@ -70,7 +72,6 @@ public class updateDatabase {
         }
         return consoleGames;
     }
-
 
 
 }

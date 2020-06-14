@@ -1,17 +1,11 @@
 package com.example.tiesiyasuo;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.os.Parcelable;
-import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,18 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapter.ViewHolder> {
 
     private List<Game> mData;
-    private String name;
-    private LayoutInflater mInflater;
     private Context context;
-    Integer buttonWidth;
 
-    // data is passed into the constructor
     public ListActivityAdapter(Context context, List<Game> data) {
         this.context = context;
         this.mData = data;
     }
 
-    // inflates the row layout from xml when needed
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.listitem2, parent, false);
@@ -53,7 +42,6 @@ public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapte
         System.out.println(name);
         int id = context.getResources().getIdentifier(name, "drawable", context.getPackageName());
         new loadImage(context, id, holder.img);
-//        holder.img.setImageResource(id);
 
     }
 
@@ -90,7 +78,6 @@ public class ListActivityAdapter extends RecyclerView.Adapter<ListActivityAdapte
                     intent.putExtra("Views", testingload.getVisited() + "");
 
                     context.startActivity(intent);
-//                    ((Activity)context).finish();
                 }
             });
 
